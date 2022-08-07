@@ -63,7 +63,7 @@ public class ForegroundService extends Service {
 
     // Partial wake lock to prevent the app from going to sleep when locked
     private PowerManager.WakeLock wakeLock;
-
+    public static int FOREGROUND_SERVICE_TYPE_MICROPHONE;
     /**
      * Allow clients to call on to the service.
      */
@@ -126,9 +126,18 @@ public class ForegroundService extends Service {
         boolean isSilent    = settings.optBoolean("silent", false);
 
         if (!isSilent) {
-            startForeground(notification, FOREGROUND_SERVICE_TYPE_MICROPHONE);
+            //startForeground(notification, FOREGROUND_SERVICE_TYPE_MICROPHONE);
             //startForeground(NOTIFICATION_ID, makeNotification());
+         
+           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                LOG.d("My  debug","if");
+                //startForeground(NOTIFICATION_ID,  makeNotification(), FOREGROUND_SERVICE_TYPE_MICROPHONE);
+            } else {
+                LOG.d("My  debug","else");
+                startForeground(NOTIFICATION_ID, makeNotification());
+            }
         }
+     
 
         PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
 
