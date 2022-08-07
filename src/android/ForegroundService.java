@@ -130,10 +130,10 @@ public class ForegroundService extends Service {
             //startForeground(NOTIFICATION_ID, makeNotification());
          
            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                LOG.d("My  debug","if");
+                //LOG.d("My  debug","if");
                 //startForeground(NOTIFICATION_ID,  makeNotification(), FOREGROUND_SERVICE_TYPE_MICROPHONE);
             } else {
-                LOG.d("My  debug","else");
+                //LOG.d("My  debug","else");
                 startForeground(NOTIFICATION_ID, makeNotification());
             }
         }
